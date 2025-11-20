@@ -1,0 +1,9 @@
+scrape_configs:
+  - job_name: 'gas-app-blue'
+    static_configs:
+      - targets: ['gas-app-blue:3000']
+
+  - job_name: 'gas-app-green'
+    static_configs:
+      - targets: ['gas-app-green:3000']
+

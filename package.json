@@ -1,0 +1,28 @@
+{
+    "name": "gas-project-vanessa",
+    "version": "1.0.0",
+    "description": "GAS Project - demo app for CI/CD and observability",
+    "main": "src/index.js",
+    "scripts": {
+        "start": "node src/index.js",
+        "dev": "nodemon src/index.js",
+        "test": "jest --runInBand"
+    },
+    "author": "Vanessa",
+    "license": "MIT",
+    "dependencies": {
+        "express": "^5.1.0",
+        "prom-client": "^15.1.3"
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.39.1",
+        "eslint": "^9.39.1",
+        "eslint-config-prettier": "^10.1.8",
+        "eslint-plugin-prettier": "^5.5.4",
+        "globals": "^16.5.0",
+        "jest": "^30.2.0",
+        "nodemon": "^3.1.11",
+        "prettier": "^3.6.2",
+        "supertest": "^7.1.4"
+    }
+}
