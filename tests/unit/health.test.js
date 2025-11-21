@@ -1,4 +1,5 @@
-﻿const request = require('supertest');
+﻿/* eslint-env jest */
+const request = require('supertest');
 const express = require('express');
 const healthHandler = require('../../src/health');
 
@@ -12,3 +13,4 @@ describe('GET /health', () => {
     expect(res.body.status).toBe('ok');
   });
 });
+

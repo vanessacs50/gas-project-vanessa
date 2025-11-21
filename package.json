@@ -4,6 +4,7 @@
     "description": "GAS Project - demo app for CI/CD and observability",
     "main": "src/index.js",
    "scripts": {
+  "start": "node src/index.js",
   "lint": "eslint .",
   "test": "jest",
   "build": "echo \"Build step placeholder\""

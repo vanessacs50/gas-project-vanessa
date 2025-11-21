@@ -1,20 +1,10 @@
-﻿const fs = require('fs');
-const path = require('path');
-
-function getVersion() {
-  try {
-    const pkg = require('../package.json');
-    return pkg.version || 'unknown';
-  } catch (err) {
-    return 'unknown';
-  }
-}
-
+﻿// src/health.js
+const packageJson = require('../package.json');
 
 function healthHandler(req, res) {
   res.json({
     status: 'ok',
-    version: getVersion(),
+    version: packageJson.version || 'unknown',
     timestamp: new Date().toISOString()
   });
 }
