@@ -27,7 +27,5 @@ jobs:
       - name: Test
         run: npm test
 
-      - name: Build Docker image
-        run: |
-          docker build -f docker/Dockerfile 
-            -t ghcr.io/.{{ github.repository_owner }}/gas:.{{ github.sha }} .
+      - name: Build Docker image (explicit Dockerfile path)
+        run: docker buildx build -f docker/Dockerfile -t ghcr.io/${{ github.repository_owner }}/gas:${{ github.sha }} .
