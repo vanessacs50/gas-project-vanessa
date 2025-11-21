@@ -20,7 +20,7 @@ This project is part of my learning journey in backend engineering and DevOps.
 
 ### Prerequisites
 - Node.js (>= 18.x)
-- npm or yarn
+- npm 
 - Docker & Docker Compose
 - Git
 
@@ -28,3 +28,11 @@ This project is part of my learning journey in backend engineering and DevOps.
 ```bash
 git clone https://github.com/vanessacs50/gas-project-vanessa.git
 cd gas-project-vanessa
+## 📚 Documentation
+
+- [System Overview](docs/system-overview.md)
+- [CI/CD Architecture](docs/ci-cd-architecture.md)
+- [Blue-Green Deployment Guide](docs/blue-green-guide.md)
+- [Canary Release Guide](docs/canary-guide.md)
+- [Rollback Guide](docs/rollback-guide.md)
+- [Observability (Prometheus/Grafana)](docs/observability-guide.md)
