@@ -1,4 +1,4 @@
-services:
+﻿services:
   gas-app-blue:
     build:
       context: ..
@@ -36,3 +36,4 @@ services:
       - GF_SECURITY_ADMIN_USER=admin
       - GF_SECURITY_ADMIN_PASSWORD=admin
 
+      - GF_PATHS_PROVISIONING=/etc/grafana/provisioning
