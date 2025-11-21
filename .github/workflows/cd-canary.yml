@@ -1,0 +1,11 @@
+﻿name: Canary
+on:
+  workflow_dispatch:
+
+jobs:
+  canary:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: docker build -f docker/Dockerfile -t myacr.azurecr.io/gas:canary .
+      - run: echo "Routing 10% traffic to canary version..."
