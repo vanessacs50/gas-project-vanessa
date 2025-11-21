@@ -2,18 +2,18 @@
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
@@ -24,9 +24,10 @@ jobs:
       - name: Lint
         run: npm run lint
 
-      - name: Run tests
+      - name: Test
         run: npm test
 
-      - name: Build Docker image (Dockerfile located in docker/)
+      - name: Build Docker image
         run: |
-          docker build -f docker/Dockerfile -t ghcr.io/${{ github.repository_owner }}/gas:${{ github.sha }} .
+          docker build -f docker/Dockerfile 
+            -t ghcr.io/.{{ github.repository_owner }}/gas:.{{ github.sha }} .

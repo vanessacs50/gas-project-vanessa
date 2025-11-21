@@ -1,4 +1,5 @@
-﻿name: Rollback
+﻿name: Rollback Deployment
+
 on:
   workflow_dispatch:
 
@@ -6,5 +7,10 @@ jobs:
   rollback:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: echo "Rolling back to previous stable version..."
+      - name: Identify last stable image
+        run: |
+          echo "stable_tag=$(cat .last-stable.txt)" >> $GITHUB_ENV
+
+      - name: Redeploy stable version
+        run: |
+          echo "Would redeploy $stable_tag to production..."

@@ -1,11 +1,45 @@
-﻿name: CD Production
+﻿name: Deploy to Production (Blue-Green)
+
 on:
   workflow_dispatch:
 
 jobs:
-  deploy-prod:
+  deploy-production:
     runs-on: ubuntu-latest
+    environment:
+      name: production
+      url: https://example.com   # replace with your real production URL
+
+    permissions:
+      contents: read
+      packages: write
+
     steps:
-      - uses: actions/checkout@v4
-      - run: docker build -f docker/Dockerfile -t myacr.azurecr.io/gas:prod .
-      - run: echo "Deploying to production..."
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Login to GHCR
+        run: |
+          echo ${{ secrets.GITHUB_TOKEN }} | docker login ghcr.io \
+            -u ${{ github.actor }} --password-stdin
+
+      - name: Build image
+        run: |
+          docker build -f docker/Dockerfile \
+            -t ghcr.io/${{ github.repository_owner }}/gas:prod-${{ github.sha }} .
+
+      - name: Push image
+        run: |
+          docker push ghcr.io/${{ github.repository_owner }}/gas:prod-${{ github.sha }}
+
+      - name: Determine active slot
+        run: |
+          echo "slot=blue" >> $GITHUB_ENV
+
+      - name: Deploy new version to green slot
+        run: |
+          echo "Would deploy to green slot via Azure CLI..."
+
+      - name: Swap Blue ⇄ Green
+        run: |
+          echo "az webapp deployment slot swap ..."

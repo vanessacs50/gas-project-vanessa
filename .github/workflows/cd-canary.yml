@@ -1,4 +1,5 @@
-﻿name: Canary
+﻿name: Canary Release
+
 on:
   workflow_dispatch:
 
@@ -6,6 +7,18 @@ jobs:
   canary:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: docker build -f docker/Dockerfile -t myacr.azurecr.io/gas:canary .
-      - run: echo "Routing 10% traffic to canary version..."
+      - name: Start Canary Deploy (10%)
+        run: echo "Route 10% of traffic to canary..."
+
+      - name: Monitoring window
+        run: sleep 20
+
+      - name: Increase to 50%
+        run: echo "Route 50% of traffic to canary..."
+
+      - name: Monitoring window
+        run: sleep 20
+
+      - name: Promote Canary to 100%
+        run: echo "Route 100% of traffic to canary..."
+
