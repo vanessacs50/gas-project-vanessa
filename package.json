@@ -3,11 +3,10 @@
     "version": "1.0.0",
     "description": "GAS Project - demo app for CI/CD and observability",
     "main": "src/index.js",
-    "scripts": {
-        "start": "node src/index.js",
-        "dev": "nodemon src/index.js",
-        "test": "jest --runInBand"
-    },
+   "scripts": {
+  "lint": "eslint .",
+  "test": "jest"
+},
     "author": "Vanessa",
     "license": "MIT",
     "dependencies": {
