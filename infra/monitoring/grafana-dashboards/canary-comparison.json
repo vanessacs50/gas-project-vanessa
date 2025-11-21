@@ -1,0 +1,23 @@
+{
+  "dashboard": {
+    "title": "Canary Comparison Dashboard",
+    "panels": [
+      {
+        "title": "Blue vs Green Request Rate",
+        "type": "graph",
+        "targets": [
+          { "expr": "rate(http_requests_total{version=\"blue\"}[1m])" },
+          { "expr": "rate(http_requests_total{version=\"green\"}[1m])" }
+        ]
+      },
+      {
+        "title": "Blue vs Green Error Rate",
+        "type": "graph",
+        "targets": [
+          { "expr": "rate(http_requests_total{version=\"blue\",status!~\"2..\"}[1m])" },
+          { "expr": "rate(http_requests_total{version=\"green\",status!~\"2..\"}[1m])" }
+        ]
+      }
+    ]
+  }
+}
